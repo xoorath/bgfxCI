@@ -57,20 +57,31 @@ after_build:
   - ps: |
       get-childitem *.exe | foreach {
         Move-Item $_.Name ..\bin_new;
+
         $pdbName = $_.BaseName + ".pdb";
-        Move-Item $pdbName ..\bin_new;
+        if (Test-Path $pdbName) {
+          Move-Item $pdbName ..\bin_new;
+        }
+
         $libName = $_.BaseName + ".lib";
-        Move-Item $libName ..\bin_new;
+        if (Test-Path $libName) {
+          Move-Item $libName ..\bin_new;
+        }
       }
   - md ..\lib\bgfx
   - mv *.lib ../lib/bgfx
   - mv *.pdb ../lib/bgfx
   - cp -r ../../../include ..
+  - cp ../../../src/bgfx_shader.sh ../include/bgfx
   - cp -r ../../../../bx/include ..
   - cp -r ../../../../bimg/include ..
   - cd ..
   - rm -r bin obj
   - mv bin_new bin
+  - ps: |
+      get-childitem bin/*,lib/* -Recurse | foreach {
+        Rename-Item -Path $_.FullName -NewName $_.Name.replace($env:CONFIGURATION,"");
+      }
 
 # Do not run unit tests
 test: off
