@@ -1,15 +1,9 @@
 include(FindPackageHandleStandardArgs)
 
 if (NOT BGFX_FOUND)
-    if(CMAKE_BUILD_TYPE STREQUAL "Release")
-        set(BGFX_RELEASE "Release")
-    else()
-        set(BGFX_RELEASE "Debug")
-    endif()
-
 	find_library(
 		BGFX_LIBRARY
-		bgfx${BGFX_RELEASE}
+		bgfx
 		PATH_SUFFIXES
 		lib/bgfx
 	)
@@ -36,7 +30,7 @@ if (NOT BGFX_FOUND)
 
     find_library(
 		BX_LIBRARY
-		bx${BGFX_RELEASE}
+		bx
 		PATH_SUFFIXES
 		lib/bgfx
 	)
@@ -63,7 +57,7 @@ if (NOT BGFX_FOUND)
 
     find_library(
 		BIMG_LIBRARY
-		bimg${BGFX_RELEASE}
+		bimg
 		PATH_SUFFIXES
 		lib/bgfx
 	)
