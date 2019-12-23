@@ -80,7 +80,7 @@ after_build:
   - rm -r bin obj
   - mv bin_new bin
   - ps: |
-      get-childitem bin/*,lib/* -Recurse | foreach {
+      get-childitem bin/* -Recurse | foreach {
         Rename-Item -Path $_.FullName -NewName $_.Name.replace($env:CONFIGURATION,"");
       }
 
