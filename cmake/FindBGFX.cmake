@@ -3,7 +3,8 @@ include(FindPackageHandleStandardArgs)
 if (NOT BGFX_FOUND)
 	find_library(
 		BGFX_LIBRARY
-		bgfx
+		bgfxDebug
+		bgfxRelease
 		PATH_SUFFIXES
 		lib/bgfx
 	)
@@ -30,7 +31,8 @@ if (NOT BGFX_FOUND)
 
     find_library(
 		BX_LIBRARY
-		bx
+		bxDebug
+		bxRelease
 		PATH_SUFFIXES
 		lib/bgfx
 	)
@@ -57,7 +59,8 @@ if (NOT BGFX_FOUND)
 
     find_library(
 		BIMG_LIBRARY
-		bimg
+		bimgDebug
+		bimgRelease
 		PATH_SUFFIXES
 		lib/bgfx
 	)
