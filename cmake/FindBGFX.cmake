@@ -16,6 +16,9 @@ if (NOT BGFX_FOUND)
 		include
 	)
 
+    list(APPEND BGFX_INCLUDE_DIRS ${BGFX_INCLUDE_DIR})
+    list(APPEND BGFX_INCLUDE_DIRS ${BGFX_INCLUDE_DIR}/compat/msvc)
+
 	add_library(BGFX::BGFX STATIC IMPORTED)
 
 	set_target_properties(
@@ -24,7 +27,7 @@ if (NOT BGFX_FOUND)
 		IMPORTED_LOCATION
 		"${BGFX_LIBRARY}"
 		INTERFACE_INCLUDE_DIRECTORIES
-		"${BGFX_INCLUDE_DIR}"
+		"${BGFX_INCLUDE_DIRS}"
 	)
 
     #-----------------------------------------
