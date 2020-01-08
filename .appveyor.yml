@@ -74,7 +74,6 @@ after_build:
   - cp -r ../../../include ..
   - cp ../../../src/bgfx_shader.sh ../include/bgfx
   - cp -r ../../../../bx/include ..
-  - cp -r ../../../../bx/3rdparty ../include
   - cp -r ../../../../bimg/include ..
   - cd ..
   - rm -r bin obj
