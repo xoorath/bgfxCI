@@ -47,6 +47,11 @@ before_build:
         $env:APPVEYOR_REPO_TAG_NAME = "canary"
         $env:_IS_BUILD_CANARY = "true"
       }
+  # Patch BGFX config
+  - ps: |
+      $bgfxConfigFile = Get-Content "src/config.h"
+      $bgfxConfigFile[298] = "#	define BGFX_CONFIG_MAX_COMMAND_BUFFER_SIZE (128<<10)"
+      $bgfxConfigFile -join "`n" ` | Set-Content "src/config.h" -Encoding Ascii -NoNewline
 
 build:
   project: bgfx/.build/projects/vs2019/bgfx.sln
