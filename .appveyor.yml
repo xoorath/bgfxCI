@@ -78,6 +78,7 @@ after_build:
   - mv *.pdb ../lib/bgfx
   - cp -r ../../../include ..
   - cp ../../../src/bgfx_shader.sh ../include/bgfx
+  - cp ../../../src/bgfx_compute.sh ../include/bgfx
   - cp -r ../../../../bx/include ..
   - cp -r ../../../../bimg/include ..
   - cd ..
